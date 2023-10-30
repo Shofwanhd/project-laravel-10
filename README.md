@@ -7,4 +7,5 @@
     <li>Edit User</li>
     <li>Delete user</li>
     <li>View Berita</li>
+    <li>test</li>
 </ul>
