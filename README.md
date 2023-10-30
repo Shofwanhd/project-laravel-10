@@ -13,4 +13,5 @@
 <h3>30/10/23 v2</h3>
 <ul>
     <li>fix password bug</li>
+    <li>disable vite</li>
 </ul>
