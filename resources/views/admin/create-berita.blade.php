@@ -65,13 +65,13 @@
         <div class="form-group row">
             <label class="col-md-2">Tanggal dan jam Publikasi</label>
             <div class="col-md-4">
-                <input type="text" name="tanggal_publish" class="form-control tanggal hasDatepicker" value="31-10-2023"
-                    id="dp1698690164784">
-                <small class="text-secondary">Format <strong>dd-mm-yyyy</strong>. Misal: 31-10-2023</small>
+                <input type="date" name="tanggal_publish" class="form-control tanggal hasDatepicker" value=""
+                    id="datepicker">
+                <small class="text-secondary">Format <strong>dd-mm-yyyy</strong>. Misal: </small>
             </div>
             <div class="col-md-2">
-                <input type="text" name="jam" class="form-control jam" value="01:22:44">
-                <small class="text-secondary">Format <strong>HH:MM:SS</strong>. Misal: 01:22:44</small>
+                <input type="text" name="jam" class="form-control jam" value="" id="hourpicker">
+                <small class="text-secondary">Format <strong>HH:MM:SS</strong>. Misal: </small>
             </div>
         </div>
 
