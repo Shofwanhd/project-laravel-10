@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KategoriBeritaController;
 
 /*
@@ -32,3 +33,5 @@ Route::get('admin', [DashboardController::class, 'dashboard']);
 Route::resource('admin/user', PenggunaController::class);
 Route::resource('admin/berita', BeritaController::class);
 Route::resource('admin/kategori-berita', KategoriBeritaController::class);
+
+Route::resource('admin/galeri', GaleriController::class);

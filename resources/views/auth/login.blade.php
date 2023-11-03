@@ -37,10 +37,10 @@
                         <p class="login-box-msg">Masukkan email dan password</p>
 
                         <div class="input-group mb-3">
-                            <input id="username" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="username" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="username" type="text" class="form-control @error('username') is-invalid @enderror"
+                                name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                            @error('email')
+                            @error('username')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
