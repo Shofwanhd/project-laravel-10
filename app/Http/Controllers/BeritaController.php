@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BeritaModel;
+use App\Models\KategoriBeritaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,8 @@ class BeritaController extends Controller
      */
     public function create()
     {
-        return view('admin.create-berita');
+        $kategori = KategoriBeritaModel::all();
+        return view('admin.create-berita', compact('kategori'));
     }
 
     /**
@@ -31,7 +33,11 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($Request,[
+
+        // ])
+
+        dd($request->all());
     }
 
     /**

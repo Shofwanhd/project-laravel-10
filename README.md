@@ -15,3 +15,9 @@
     <li>fix password bug</li>
     <li>disable vite</li>
 </ul>
+
+<h3>03/11/23 v2</h3>
+<ul>
+    <li>Update view create berita</li>
+    <li>Fix summernote</li>
+</ul>

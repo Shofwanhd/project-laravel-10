@@ -4,9 +4,9 @@
 @endsection
 @section('content')
     <!-- DEBUG-VIEW START 1 APPPATH/Views/admin/berita/tambah.php -->
-    <form action="http://compro-ci4.javawebmedia.co.id/admin/berita/tambah" method="post" accept-charset="utf-8"
-        enctype="multipart/form-data">
-        <input type="hidden" name="csrf_test_name" value="e7e342ae70b567793d3e92f3860bd16b">
+    <form action="{{ route('berita.store') }}" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id_user" value="{{ Auth::user()->id_user }}">
         <div class="form-group row">
             <label class="col-md-2">Judul Berita</label>
             <div class="col-md-10">
@@ -25,18 +25,10 @@
             <label class="col-md-2">Kategori, Jenis &amp; Status</label>
             <div class="col-md-2">
                 <select name="id_kategori" class="form-control">
-                    <option value="6">
-                        Kursus Web </option>
-                    <option value="5">
-                        Web Programming </option>
-                    <option value="4">
-                        Updates </option>
-                    <option value="3">
-                        Java Web Media </option>
-                    <option value="2">
-                        Berita </option>
-                    <option value="1">
-                        Web Design </option>
+                    @foreach ($kategori as $data)
+                        <option value="{{ $data->id_kategori }}">
+                            {{ $data->nama_kategori }} </option>
+                    @endforeach
                 </select>
                 <small class="text-secondary">Kategori</small>
             </div>
@@ -70,7 +62,7 @@
                 <small class="text-secondary">Format <strong>dd-mm-yyyy</strong>. Misal: </small>
             </div>
             <div class="col-md-2">
-                <input type="text" name="jam" class="form-control jam" value="" id="hourpicker">
+                <input type="time" name="jam" class="form-control jam" value="" id="hourPicker">
                 <small class="text-secondary">Format <strong>HH:MM:SS</strong>. Misal: </small>
             </div>
         </div>
@@ -85,7 +77,7 @@
         <div class="form-group row">
             <label class="col-md-2">Isi Berita</label>
             <div class="col-md-10">
-                <textarea id="summernote" name="editordata"></textarea>
+                <textarea id="summernote" name="isi"></textarea>
             </div>
         </div>
 

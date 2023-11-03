@@ -42,8 +42,11 @@
 
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <script>
         $(function() {
             $("#datepicker").datepicker();
@@ -162,21 +165,6 @@
     <script src="{{ asset('assets/admin/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
     <!-- Page specific script -->
-
-    <script>
-        const hourPicker = document.getElementById("hourPicker");
-
-        hourPicker.addEventListener("input", function() {
-            const value = this.value;
-            const regex = /^([01]\d|2[0-3]):([0-5]\d)$/; // Format HH:MM
-
-            if (!regex.test(value)) {
-                this.style.border = "1px solid red"; // Tampilkan input yang salah dalam warna merah
-            } else {
-                this.style.border = "1px solid #ccc"; // Reset style
-            }
-        });
-    </script>
 
 
     <script>

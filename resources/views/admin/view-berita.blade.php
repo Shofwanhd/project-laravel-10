@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <p>
-        <a href="" class="btn btn-success">
+        <a href="{{ route('berita.create') }}" class="btn btn-success">
             <i class="fa fa-plus"></i> Tambah Baru
         </a>
     </p>
