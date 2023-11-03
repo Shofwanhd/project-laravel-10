@@ -8,4 +8,5 @@
     <li>Delete user</li>
     <li>View Berita</li>
     <li>fix password bug</li>
+    <li>add design login</li>
 </ul>
