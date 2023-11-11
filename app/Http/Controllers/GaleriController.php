@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GaleriController extends Controller
 {
@@ -11,7 +12,12 @@ class GaleriController extends Controller
      */
     public function index()
     {
-        //
+        $galeri = DB::table('galeri')
+            ->where('jenis_galeri', 'Galeri')
+            ->orderBy('galeri.id_galeri', 'DESC')
+            ->get();
+
+        return view('admin.view-galeri', compact('galeri'));
     }
 
     /**
