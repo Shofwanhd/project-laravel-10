@@ -25,7 +25,8 @@
                 @foreach ($data as $data)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>Gambar</td>
+                        <td><img src="{{ url('assets/upload/image/' . $data->gambar) }}" style="max-width: 150px"
+                                alt="iamge"></td>
                         <td><a style="text-overflow: ellipsis"
                                 href="http://compro-ci4.javawebmedia.co.id/admin/berita/edit/26">
                                 {{ $data->judul_berita }} </a>
