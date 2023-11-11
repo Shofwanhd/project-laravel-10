@@ -10,4 +10,5 @@ class BeritaModel extends Model
     use HasFactory;
     public $table = "berita";
     protected $guarded = [];
+    public $timestamps = false;
 }

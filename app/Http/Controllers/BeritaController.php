@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Validator;
 
 class BeritaController extends Controller
 {
@@ -36,39 +37,39 @@ class BeritaController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'id_user' => 'required',
-        //     'id_kategori' => 'required',
-        //     'slug_berita' => 'required|max:255',
-        //     'ringkasan' => 'required',
-        //     'judul_berita' => 'required|max:255',
-        //     'isi' => 'required',
-        //     'status_berita' => 'required',
-        //     'jenis_berita' => 'required',
-        //     'keywords' => 'required',
-        //     'gambar' => 'image|mimes : jpg,png,jpeg',
-        //     'icon' => 'required',
-        //     'hits' => 'required',
-        //     'tanggal_post' => 'required',
-        //     'tangagl_publish' => 'required',
-        //     'tanggal' => 'required',
-        // ], [
-        //     'id_user' => 'Harus Diisi',
-        //     'id_kategori' => 'Harus Diisi',
-        //     'slug_berita' => 'Harus Diisi',
-        //     'judul_berita' => 'Harus Diisi',
-        //     'ringkasan' => 'Harus Diisi',
-        //     'isi' => 'Harus Diisi',
-        //     'status_berita' => 'Harus Diisi',
-        //     'jenis_berita' => 'Harus Diisi',
-        //     'keywords' => 'Harus Diisi',
-        //     'gambar' => 'Harus Diisi',
-        //     'icon' => 'Harus Diisi',
-        //     'hits' => 'Harus Diisi',
-        //     'tanggal_post' => 'Harus Diisi',
-        //     'tangagl_publish' => 'Harus Diisi',
-        //     'tanggal' => 'Harus Diisi',
-        // ]);
+        $request->validate([
+            'id_user' => 'required',
+            'id_kategori' => 'required',
+            'slug_berita' => 'required|max:255',
+            'ringkasan' => 'required',
+            'judul_berita' => 'required|max:255',
+            'isi' => 'required',
+            'status_berita' => 'required',
+            'jenis_berita' => 'required',
+            'keywords' => 'required',
+            'gambar' => 'image|mimes : jpg,png,jpeg',
+            'icon' => 'required',
+            'hits' => 'required',
+            'tanggal_post' => 'required',
+            'tangagl_publish' => 'required',
+            'tanggal' => 'required',
+        ], [
+            'id_user' => 'Harus Diisi',
+            'id_kategori' => 'Harus Diisi',
+            'slug_berita' => 'Harus Diisi',
+            'judul_berita' => 'Harus Diisi',
+            'ringkasan' => 'Harus Diisi',
+            'isi' => 'Harus Diisi',
+            'status_berita' => 'Harus Diisi',
+            'jenis_berita' => 'Harus Diisi',
+            'keywords' => 'Harus Diisi',
+            'gambar' => 'Harus Diisi',
+            'icon' => 'Harus Diisi',
+            'hits' => 'Harus Diisi',
+            'tanggal_post' => 'Harus Diisi',
+            'tangagl_publish' => 'Harus Diisi',
+            'tanggal' => 'Harus Diisi',
+        ]);
 
         $data = ([
             'id_user' => $request->id_user,
@@ -79,17 +80,23 @@ class BeritaController extends Controller
             'isi' => $request->isi,
             'status_berita' => $request->status_berita,
             'jenis_berita' => $request->jenis_berita,
-            'keyword' => $request->keyword,
-            'gambar' => $request->gambar,
+            'keywords' => $request->keywords,
+            'gambar' => $request->file('gambar')->getClientOriginalName(),
             'icon' => $request->icon,
             'hits' => 0,
-            'tanggal_post' => $request->tanggal_publish,
-            'tanggal_publish' => $request->tanggal_publish,
-            'tanggal' => Carbon::now(),
+            'tanggal_post' => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . date('H:i', strtotime($request->jam)),
+            'tanggal_publish' => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . date('H:i', strtotime($request->jam)),
+            'tanggal' => date('Y-m-d', strtotime($request->tanggal_publish)) . ' ' . date('H:i', strtotime($request->jam)),
         ]);
 
+        $store = BeritaModel::create($data);
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->getClientOriginalName();
+            $request->file('gambar')->move('assets/upload/image/', $request->file('gambar')->getClientOriginalName());
+            $store->save();
+        }
 
-        dd($data);
+        return redirect('admin/berita');
     }
 
     /**
